@@ -1,0 +1,53 @@
+
+body {
+    background-color: white;
+    font-family: Helvetica, sans-serif;
+}
+h2:hover{
+    color: red;
+    font-size: 20px;
+}
+p {
+    color: gray;
+    text-align: center;
+    font-family: "cardea-lining", serif;
+    font-size: 20px;
+font-weight: 500;
+font-style: normal;
+}
+#navbar {
+    background-color: rgb(192, 27, 27);
+}
+h3 {
+    color: black;
+}
+.paragraph {
+    color: blueviolet;
+}
+#header {
+    box-shadow: 0px 4px 2px -2px gray;
+     font-family: "azo-sans-web", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    text-align: center;
+}
+.big {
+    font-size: 30px;
+}
+title {
+    color: black;
+    text-align: center;
+}
+.cafe {
+    color: black;
+    text-align: center;
+    role: banner;
+}
+.want-to-go {
+    color: black;
+    text-align: right;
+}
+.restaurants {
+    color: black;
+    text-align: left;
+}
