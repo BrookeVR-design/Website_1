@@ -6,19 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title">My Eats of Athens</title>
     <link rel="stylesheet" href="style.css">
-    font-family: monospace;
 </head>
 <nav id="navbar" role="banner">
     <img src="" alt="logo">
         <ul>
         <button>Menu</button>
-            <li data-nc-left="About"><a href="Link to about">About</a></li>
-            <li data-nc-left="Restaurants"><a href="link to restaurants">Restaurants</a></li>
+            <li data-nc-left="About"><a href="./about.html">About</a></li>
+            <li data-nc-left="Restaurants"><a href="./restaurants.html">Restaurants</a></li>
             <li data-nc-left="Cafes"><a href="link to cafes">Cafes</a></li>
             <li data-nc-left="Want-to-go"><a href="link to want-to-go">Want-to-go</a></li>
         </ul>
 </nav>
-<ul></ul>
 <header id="header" class="big" >
     <h1 title="My Eats of Athens">My Eats of Athens</h1>
     <h1><link rel="stylesheet" href="https://use.typekit.net/dfp2uce.css"></h1>
@@ -26,7 +24,23 @@
 </p><link rel="stylesheet" href="https://use.typekit.net/dfp2uce.css">
     <button class="big">Learn More</button>
 <section>
-    <img-carousel-section></img-carousel-section>
+    <img-carousel-section aria-label="Featured restaurants">
+    <div class="carousel-track">
+        <div class="carousel-group">
+            <img src="last resort.jpeg" alt="Last Resort Grill">
+            <img src="baddies Medium.jpeg" alt="Baddies Burgers">
+            <img src="Clocked.jpeg" alt="Clocked Burgers">
+            <img src="cali n tito.jpeg" alt="Cali n Tito">
+        </div>
+
+        <div class="carousel-group" aria-hidden="true">
+            <img src="last resort.jpeg" alt="">
+            <img src="baddies Medium.jpeg" alt="">
+            <img src="Clocked.jpeg" alt="">
+            <img src="cali n tito.jpeg" alt="">
+        </div>
+    </div>
+</img-carousel-section>
 </section>
 </header>
 <section>
@@ -47,5 +61,5 @@
     </div>
 </section>
 <p>this is a paragraph</p>
-<p class="paragraph">this is a paragraph</p>
+<p class="paragraph">Hello! This is a tester paragraph and I am just testing different things I can do.</p>
 

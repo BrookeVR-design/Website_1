@@ -23,6 +23,9 @@ h3 {
 }
 .paragraph {
     color: blueviolet;
+    font-family: "cursive";
+    line-height: 1.5;
+    font-style: italic;
 }
 #header {
     box-shadow: 0px 4px 2px -2px gray;
@@ -41,13 +44,62 @@ title {
 .cafe {
     color: black;
     text-align: center;
-    role: banner;
+    font-size: 30px;
 }
 .want-to-go {
     color: black;
     text-align: right;
+    font-size: 30px;
 }
 .restaurants {
     color: black;
     text-align: left;
+    font-size: 30px;
+}
+section
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+img-carousel-section {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: move-carousel 25s linear infinite;
+}
+.carousel-group {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex-shrink: 0;
+}
+
+.carousel-group img {
+    width: 220px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+@keyframes move-carousel {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+        animation: none;
+    }
 }
