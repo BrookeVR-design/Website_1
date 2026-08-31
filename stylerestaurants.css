@@ -1,9 +1,108 @@
+@media screen and (max-width: 400px) {
+    .container {
+        font-size: 14px;
+    }
+}
+h1 {
+    font-family: "komu-new-f", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 100px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
 .restaurant-info
 {
     font-size: 30px;
-    border-bottom: 2px solid rgb(191, 10, 10);
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid rgb(191, 10, 10); 
 }
-.My Favorite Restaurants
+h2
 {
-    border-top: 2px solid black;
+     font-family: "greycliff-cf", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+}
+h3
+{
+     font-family: "greycliff-cf", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgb(191, 10, 10);
+}
+p
+{
+    font-family: "source-sans-3-variable", sans-serif;
+    font-variation-settings: "wght" 200;
+    font-size: 20px;
+    text-align: center;
+}
+.restaurant-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.restaurant-image {
+    width: 220px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: min(700px, 88%);
+    margin: 12px auto 0;
+    background: rgb(192, 27, 27);
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.35rem 0.75rem;
+}
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+#navbar img {
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+#navbar li {
+    display: inline-block;
+}
+#navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+#navbar a:hover {
+    opacity: 0.8;
 }
