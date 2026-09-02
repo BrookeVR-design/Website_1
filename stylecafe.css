@@ -53,6 +53,12 @@
 #navbar a:hover {
     opacity: 0.8;
 }
+.cafe-info {
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid rgb(191, 10, 10); 
+}
 h1 {
     font-family: "komu-new-f", sans-serif;
     font-weight: 400;
@@ -67,5 +73,21 @@ h2
     font-weight: 700;
     font-style: normal;
     font-size: 30px;
+    text-align: center;
+}
+h3
+{
+     font-family: "greycliff-cf", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgb(191, 10, 10);
+}
+p
+{
+    font-family: "source-sans-3-variable", sans-serif;
+    font-variation-settings: "wght" 200;
+    font-size: 20px;
     text-align: center;
 }
