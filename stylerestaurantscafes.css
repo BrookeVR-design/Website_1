@@ -2,6 +2,26 @@
     .container {
         font-size: 14px;
     }
+.container {
+    display: grid;
+    grid-template-areas: "nav nav nav"
+                         "main main sidebar"
+                         "footer footer footer";
+}
+nav {
+    grid-area: nav;
+}
+.main {
+    grid-area: main;
+}
+.sidebar {
+    grid-area: sidebar;
+    align-items: center;
+    justify-content: center;
+}
+.box {    
+    grid-area: footer;
+}
 }
 h1 {
     font-family: "komu-new-f", sans-serif;
@@ -28,7 +48,8 @@ h2
 }
 h3
 {
-     font-family: "greycliff-cf", sans-serif;
+    font-family: "greycliff-cf", sans-serif;
+    color: white;
     font-weight: 700;
     font-style: normal;
     font-size: 50px;
@@ -82,6 +103,7 @@ p
     display: block;
 }
 #navbar {
+    font-family: "source-sans-3-variable", sans-serif;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -130,4 +152,41 @@ p
 
 #navbar a:hover {
     opacity: 0.8;
+}
+element.style {
+    text-align: center;
+}
+.restaurant-image {
+    display: block;
+    width: 300px;
+    height: 220px;
+    max-width: 100%;
+    object-fit: cover;
+    margin: 20px auto;
+    max-width: 100%;
+}
+img {
+    display: block;
+    width: 300px;
+    height: 220px;
+    object-fit: cover;
+    max-width: 100%;
+}
+element.style {
+    text-align: center;
+}
+.cafe-image {
+    display: block;
+    width: 300px;
+    height: 220px;
+    object-fit: cover;
+    margin: 20px auto;
+    max-width: 100%;
+}
+img {
+    display: block;
+    width: 300px;
+    height: 220px;
+    object-fit: cover;
+    max-width: 100%;
 }
