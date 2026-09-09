@@ -17,6 +17,7 @@ h1 {
     text-align: center;
     font-family: "source-sans-3-variable", sans-serif;
     font-variation-settings: "wght" 200;
+    background-color: white;
  }
  #navbar {
     font-family: "source-sans-3-variable", sans-serif;
@@ -29,12 +30,15 @@ h1 {
     border-radius: 999px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 0.35rem 0.75rem;
+    box-sizing: border-box;
 }
 #navbar img {
-    height: 32px;
-    width: 32px;
+    display: block;
+    width: 48px;
+    height: 48px;
     object-fit: cover;
     border-radius: 50%;
+    flex-shrink: 0;
 }
  .nav-inner {
     display: flex;
@@ -42,14 +46,6 @@ h1 {
     justify-content: space-between;
     gap: 1rem;
 }
-
-#navbar img {
-    height: 32px;
-    width: 32px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
 #navbar ul {
     display: flex;
     align-items: center;
@@ -86,4 +82,13 @@ img {
     margin: 40px auto;
     max-width: 80%;
     height: 30;
+}
+body {
+    background-color: white;
+    background-image: url("background5.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
 }
