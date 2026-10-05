@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Want-To-Go Restaurants</title>
+    <link rel="stylesheet" href="https://use.typekit.net/dfp2uce.css">
+    <link rel="stylesheet" href="stylewant.css">
+</head>
+<body>
+    <nav id="navbar" role="banner">
+        <div class="nav-inner">
+            <a href="index.html" aria-label="Home">
+                <img src="logowhite.svg" alt="Logo">
+            </a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="cafes.html">Cafes</a></li>
+                <li><a href="want_to_go.html">Want-To-Go</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-container">
+        <h1>Want-To-Go Restaurants</h1>
+        <h2 class="intro">Below is a list of restaurants in Athens, GA that I want to try! You can filter the list by cuisine and star rating.</h2>
+        <div class="filters-row">
+            <div class="dropdown">
+                <button id="dropBtn" type="button" aria-haspopup="true" aria-expanded="false">
+                    Choose a Cuisine ▾
+                </button>
+                <div id="dropMenu" class="menu" role="menu" aria-label="Cuisine options">
+                    <button type="button" data-value="all" role="menuitem">All Cuisines</button>
+                    <button type="button" data-value="mediterranean" role="menuitem">Mediterranean</button>
+                    <button type="button" data-value="italian" role="menuitem">Italian</button>
+                    <button type="button" data-value="steak-house" role="menuitem">Steak House</button>
+                    <button type="button" data-value="fried-chicken" role="menuitem">Fried Chicken</button>
+                    <button type="button" data-value="southern" role="menuitem">Southern</button>
+                    <button type="button" data-value="pizza" role="menuitem">Pizza</button>
+                    <button type="button" data-value="southeast-asian" role="menuitem">Southeast Asian</button>
+                    <button type="button" data-value="japanese" role="menuitem">Japanese</button>
+                    <button type="button" data-value="indian" role="menuitem">Indian</button>
+                    <button type="button" data-value="mexican" role="menuitem">Mexican</button>
+                    <button type="button" data-value="american" role="menuitem">American</button>
+                    <button type="button" data-value="jamaican" role="menuitem">Jamaican</button>
+                    <button type="button" data-value="thai" role="menuitem">Thai</button>
+                    <button type="button" data-value="vietnamese" role="menuitem">Vietnamese</button>
+                    <button type="button" data-value="seafood" role="menuitem">Seafood</button>
+                </div>
+            </div>
+            <div class="rating-control">
+                <label for="starRating">Star Rating: <span id="starRatingValue">4.6</span></label>
+                <input type="range" id="starRating" min="3" max="5" step="0.1" value="4.6">
+            </div>
+        </div>
+
+        <p id="restaurantStatus" role="status" aria-live="polite">Loading restaurants...</p>
+        <section id="restaurantGrid" class="restaurant-grid" aria-label="Restaurants to try"></section>
+    </main>
+
+    <script>
+        const dropBtn = document.getElementById("dropBtn");
+        const dropMenu = document.getElementById("dropMenu");
+        const restaurantGrid = document.getElementById("restaurantGrid");
+        const restaurantStatus = document.getElementById("restaurantStatus");
+        const slider = document.getElementById("starRating");
+        const ratingOutput = document.getElementById("starRatingValue");
+        let restaurants = [];
+        let selectedCuisine = "all";
+
+        function setOpen(isOpen) {
+            dropMenu.classList.toggle("open", isOpen);
+            dropBtn.setAttribute("aria-expanded", String(isOpen));
+        }
+
+        function renderRestaurants() {
+            const visibleRestaurants = restaurants.filter((restaurant) => {
+                if (selectedCuisine === "all") return true;
+
+                const cuisineName = (restaurant.Cuisine || "").toLowerCase();
+                const selectedCuisineName = selectedCuisine.replaceAll("-", " ");
+                return cuisineName === selectedCuisineName;
+            });
+
+            restaurantGrid.replaceChildren();
+
+            visibleRestaurants.forEach((restaurant) => {
+                const card = document.createElement("article");
+                card.className = "restaurant-card";
+
+                const image = document.createElement("img");
+                image.src = restaurant.path;
+                image.alt = restaurant.alttext || restaurant.Name;
+                image.loading = "lazy";
+
+                const copy = document.createElement("div");
+                copy.className = "restaurant-card-copy";
+
+                const name = document.createElement("h3");
+                name.textContent = restaurant.Name;
+
+                const cuisine = document.createElement("p");
+                cuisine.textContent = restaurant.Cuisine;
+
+                const rating = document.createElement("p");
+                rating.textContent = `Rating: ${Number(restaurant.Rating).toFixed(1)} / 5`;
+
+                copy.append(name, cuisine, rating);
+                card.append(image, copy);
+                restaurantGrid.append(card);
+            });
+
+            restaurantStatus.textContent = `${visibleRestaurants.length} restaurants`;
+        }
+
+        dropBtn.addEventListener("click", (event) => {
+            event.stopPropagation();
+            setOpen(!dropMenu.classList.contains("open"));
+        });
+
+        dropMenu.addEventListener("click", (event) => {
+            const option = event.target.closest("button[data-value]");
+            if (!option) return;
+
+            dropBtn.textContent = `${option.textContent} ▾`;
+            selectedCuisine = option.dataset.value;
+            renderRestaurants();
+            setOpen(false);
+        });
+
+        document.addEventListener("click", () => setOpen(false));
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                setOpen(false);
+            }
+        });
+
+        function updateFill() {
+            const min = Number(slider.min);
+            const max = Number(slider.max);
+            const value = Number(slider.value);
+            const percentage = ((value - min) / (max - min)) * 100;
+            slider.style.setProperty("--fill", `${percentage}%`);
+            ratingOutput.textContent = value.toFixed(1);
+        }
+
+        slider.addEventListener("input", updateFill);
+        updateFill();
+
+        fetch("restuarants.json")
+            .then((response) => {
+                if (!response.ok) throw new Error(`Could not load restaurant data (${response.status})`);
+                return response.json();
+            })
+            .then((data) => {
+                restaurants = data;
+                renderRestaurants();
+            })
+            .catch((error) => {
+                restaurantStatus.textContent = "Restaurant images could not be loaded.";
+                console.error(error);
+            });
+    </script>
+</body>
+</html>
