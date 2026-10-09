@@ -6,8 +6,14 @@
     <title>Want-To-Go Restaurants</title>
     <link rel="stylesheet" href="https://use.typekit.net/dfp2uce.css">
     <link rel="stylesheet" href="stylewant.css">
+    <link rel="icon" type="image/x-icon" href="./logo.svg">
 </head>
 <body>
+    <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+        <span class="loader-spinner" aria-hidden="true"></span>
+        <p>Loading restaurants...</p>
+    </div>
+
     <nav id="navbar" role="banner">
         <div class="nav-inner">
             <a href="index.html" aria-label="Home">
@@ -50,8 +56,8 @@
                 </div>
             </div>
             <div class="rating-control">
-                <label for="starRating">Star Rating: <span id="starRatingValue">4.6</span></label>
-                <input type="range" id="starRating" min="3" max="5" step="0.1" value="4.6">
+                <label for="starRating">Star Rating: <span id="starRatingValue">3.0</span></label>
+                <input type="range" id="starRating" min="3" max="5" step="0.1" value="3.0">
             </div>
         </div>
 
@@ -59,108 +65,6 @@
         <section id="restaurantGrid" class="restaurant-grid" aria-label="Restaurants to try"></section>
     </main>
 
-    <script>
-        const dropBtn = document.getElementById("dropBtn");
-        const dropMenu = document.getElementById("dropMenu");
-        const restaurantGrid = document.getElementById("restaurantGrid");
-        const restaurantStatus = document.getElementById("restaurantStatus");
-        const slider = document.getElementById("starRating");
-        const ratingOutput = document.getElementById("starRatingValue");
-        let restaurants = [];
-        let selectedCuisine = "all";
-
-        function setOpen(isOpen) {
-            dropMenu.classList.toggle("open", isOpen);
-            dropBtn.setAttribute("aria-expanded", String(isOpen));
-        }
-
-        function renderRestaurants() {
-            const visibleRestaurants = restaurants.filter((restaurant) => {
-                if (selectedCuisine === "all") return true;
-
-                const cuisineName = (restaurant.Cuisine || "").toLowerCase();
-                const selectedCuisineName = selectedCuisine.replaceAll("-", " ");
-                return cuisineName === selectedCuisineName;
-            });
-
-            restaurantGrid.replaceChildren();
-
-            visibleRestaurants.forEach((restaurant) => {
-                const card = document.createElement("article");
-                card.className = "restaurant-card";
-
-                const image = document.createElement("img");
-                image.src = restaurant.path;
-                image.alt = restaurant.alttext || restaurant.Name;
-                image.loading = "lazy";
-
-                const copy = document.createElement("div");
-                copy.className = "restaurant-card-copy";
-
-                const name = document.createElement("h3");
-                name.textContent = restaurant.Name;
-
-                const cuisine = document.createElement("p");
-                cuisine.textContent = restaurant.Cuisine;
-
-                const rating = document.createElement("p");
-                rating.textContent = `Rating: ${Number(restaurant.Rating).toFixed(1)} / 5`;
-
-                copy.append(name, cuisine, rating);
-                card.append(image, copy);
-                restaurantGrid.append(card);
-            });
-
-            restaurantStatus.textContent = `${visibleRestaurants.length} restaurants`;
-        }
-
-        dropBtn.addEventListener("click", (event) => {
-            event.stopPropagation();
-            setOpen(!dropMenu.classList.contains("open"));
-        });
-
-        dropMenu.addEventListener("click", (event) => {
-            const option = event.target.closest("button[data-value]");
-            if (!option) return;
-
-            dropBtn.textContent = `${option.textContent} ▾`;
-            selectedCuisine = option.dataset.value;
-            renderRestaurants();
-            setOpen(false);
-        });
-
-        document.addEventListener("click", () => setOpen(false));
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                setOpen(false);
-            }
-        });
-
-        function updateFill() {
-            const min = Number(slider.min);
-            const max = Number(slider.max);
-            const value = Number(slider.value);
-            const percentage = ((value - min) / (max - min)) * 100;
-            slider.style.setProperty("--fill", `${percentage}%`);
-            ratingOutput.textContent = value.toFixed(1);
-        }
-
-        slider.addEventListener("input", updateFill);
-        updateFill();
-
-        fetch("restuarants.json")
-            .then((response) => {
-                if (!response.ok) throw new Error(`Could not load restaurant data (${response.status})`);
-                return response.json();
-            })
-            .then((data) => {
-                restaurants = data;
-                renderRestaurants();
-            })
-            .catch((error) => {
-                restaurantStatus.textContent = "Restaurant images could not be loaded.";
-                console.error(error);
-            });
-    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>

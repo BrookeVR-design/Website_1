@@ -4,181 +4,208 @@
     "Rating": 4.3,
     "Cuisine": "Mediterranean",
     "path": "assets/the%20national.jpeg",
-    "alttext": "The National"
+    "alttext": "The National",
+    "link": "www.thenationalrestaurant.com"
   },
   {
     "Name": "Osteria Athena",
     "Rating": 4.4,
     "Cuisine": "Italian",
     "path": "assets/osteria%20athena.jpeg",
-    "alttext": "Osteria Athena"
+    "alttext": "Osteria Athena",
+    "link": "www.osteriaathena.com"
   },
   {
     "Name": "Porterhouse Grill",
     "Rating": 4.2,
     "Cuisine": "Steak House",
     "path": "assets/porterhouse%20grill.jpeg",
-    "alttext": "Porterhouse Grill"
+    "alttext": "Porterhouse Grill",
+    "link": "https://athens.porterhouse-grill.com/"
   },
   {
     "Name": "Hot or Not Chicken",
     "Rating": 5,
     "Cuisine": "Fried Chicken",
     "path": "assets/hot%20or%20not%20chicken.jpeg",
-    "alttext": "Hot or Not Chicken"
+    "alttext": "Hot or Not Chicken",
+    "link": "www.hotornotchicken.com"
   },
   {
     "Name": "5&10",
     "Rating": 4.8,
     "Cuisine": "Southern",
     "path": "assets/510.jpg",
-    "alttext": "5&10"
+    "alttext": "5&10",
+    "link": "www.fiveandten.com"
   },
   {
     "Name": "Emmy Squared Pizza",
     "Rating": 5,
     "Cuisine": "Pizza",
     "path": "assets/emmy%20squared%20pizza.png",
-    "alttext": "Emmy Squared Pizza"
+    "alttext": "Emmy Squared Pizza",
+    "link": "www.emmysquared.com"
   },
   {
     "Name": "Puma Yu's",
     "Rating": 4.8,
     "Cuisine": "Southeast Asian",
     "path": "assets/puma%20yus.jpg",
-    "alttext": "Puma Yu's"
+    "alttext": "Puma Yu's",
+    "link": "www.pumayus.com"
   },
   {
     "Name": "The Chop House",
     "Rating": 4.5,
     "Cuisine": "Steak House",
     "path": "assets/the%20chop%20house.jpg",
-    "alttext": "The Chop House"
+    "alttext": "The Chop House",
+    "link": "https://thechophouse.com/athens-steakhouse.html"
   },
   {
     "Name": "Georges Lowcountry Table",
     "Rating": 4.4,
     "Cuisine": "Southern",
     "path": "assets/george-s-lowcountry-table.jpg",
-    "alttext": "Georges Lowcountry Table"
+    "alttext": "Georges Lowcountry Table",
+    "link": "www.georgeslowcountrytable.com"
   },
   {
     "Name": "Hilltop Grille",
     "Rating": 3.8,
     "Cuisine": "Southern",
     "path": "assets/hilltop%20grill.webp",
-    "alttext": "Hilltop Grille"
+    "alttext": "Hilltop Grille",
+    "link": "www.hilltopgrille.com"
   },
   {
     "Name": "Shokitini",
     "Rating": 4.3,
     "Cuisine": "Japanese",
     "path": "assets/shokitini.jpg",
-    "alttext": "Shokitini"
+    "alttext": "Shokitini",
+    "link": "www.shokitini.com"
   },
   {
     "Name": "DePalma's",
     "Rating": 4.1,
     "Cuisine": "Italian",
     "path": "assets/depalmas.jpg",
-    "alttext": "DePalma's"
+    "alttext": "DePalma's",
+    "link": "www.depalmasitaliancafe.com"
   },
   {
     "Name": "Taste of India",
     "Rating": 4.4,
     "Cuisine": "Indian",
     "path": "assets/taste%20of%20india.jpeg",
-    "alttext": "Taste of India"
+    "alttext": "Taste of India",
+    "link": "www.tasteofindiatogo.com"
   },
   {
     "Name": "Sr. Sol",
     "Rating": 4.4,
     "Cuisine": "Mexican",
     "path": "assets/sr%20sol.jpeg",
-    "alttext": "Sr. Sol"
+    "alttext": "Sr. Sol",
+    "link": "www.srsolmexican.com"
   },
   {
     "Name": "The Pine Food and Drink",
     "Rating": 4.3,
     "Cuisine": "American",
     "path": "assets/the%20pine.jpg",
-    "alttext": "The Pine Food and Drink"
+    "alttext": "The Pine Food and Drink",
+    "link": "www.thepineathens.com"
   },
   {
     "Name": "The Grill",
     "Rating": 3.5,
     "Cuisine": "American",
     "path": "assets/the%20grill.jpg",
-    "alttext": "The Grill"
+    "alttext": "The Grill",
+    "link": "www.thegrillathens.com"
   },
   {
     "Name": "Kelly's",
     "Rating": 4.5,
     "Cuisine": "Jamaican",
     "path": "assets/kellys.jpg",
-    "alttext": "Kelly's"
+    "alttext": "Kelly's",
+    "link": "www.kellysjerk.com"
   },
   {
     "Name": "Hook and Reel",
     "Rating": 3.7,
     "Cuisine": "Seafood",
     "path": "assets/hook%20and%20reel.avif",
-    "alttext": "Hook and Reel"
+    "alttext": "Hook and Reel",
+    "link": "https://hookreel.com/location/athens/"
   },
   {
-    "Name": "Aqua Linda",
+    "Name": "Agua Linda",
     "Rating": 4.3,
     "Cuisine": "Mexican",
     "path": "assets/aqua%20linda.jpg",
-    "alttext": "Aqua Linda"
+    "alttext": "Agua Linda",
+    "link": "www.agualindarestaurant.com"
   },
   {
     "Name": "Thai Spoon",
     "Rating": 4,
     "Cuisine": "Thai",
     "path": "assets/thaispoon.jpg",
-    "alttext": "Thai Spoon"
+    "alttext": "Thai Spoon",
+    "link": "www.thaispoonathens.com"
   },
   {
     "Name": "La Parilla",
     "Rating": 4.2,
     "Cuisine": "Mexican",
     "path": "assets/la%20parilla.png",
-    "alttext": "La Parilla"
+    "alttext": "La Parilla",
+    "link": "www.laparilla.com"
+
   },
   {
     "Name": "Dos Palma's",
     "Rating": 3.8,
     "Cuisine": "Mexican",
     "path": "assets/dos%20palmas.avif",
-    "alttext": "Dos Palma's"
+    "alttext": "Dos Palma's",
+    "link": "www.athens-dospalmas.com"
   },
   {
     "Name": "Tiger Sushi",
     "Rating": 3.5,
     "Cuisine": "Japanese",
     "path": "assets/tiger%20sushi.jpeg",
-    "alttext": "Tiger Sushi"
+    "alttext": "Tiger Sushi",
+    "link": "https://www.instagram.com/tigersushi_athens/?hl=en"
   },
   {
     "Name": "Just Pho",
     "Rating": 3.9,
     "Cuisine": "Vietnamese",
     "path": "assets/just%20pho.jpg",
-    "alttext": "Just Pho"
+    "alttext": "Just Pho",
+    "link": "www.justphoathens.com"
   },
   {
     "Name": "Locos",
     "Rating": 3.5,
     "Cuisine": "American",
     "path": "assets/locos.webp",
-    "alttext": "Locos"
+    "alttext": "Locos",
+    "link": "www.locosgrill.com"
   },
   {
     "Name": "Mother Pho",
     "Rating": 4.1,
     "Cuisine": "Vietnamese",
     "path": "assets/mother%20pho%202.jpg",
-    "alttext": "Mother Pho"
+    "alttext": "Mother Pho",
+    "link": "https://www.visitathensga.com/listing/mother-pho/2324/"
   }
 ]

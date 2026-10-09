@@ -40,7 +40,7 @@ body {
 }
 h1 {
     margin-top: 0;
-    font-family: “komu-new-f”, sans-serif;
+    font-family: "komu-new-f", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -106,23 +106,6 @@ h3 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 0.35rem 0.75rem;
     box-sizing: border-box;
-}
-.image-row {
-    width: 1000px;
-    max-width: 100%;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: nowrap;   /* keep all images in one row */
-    width: max-content;  /* grows with the number of images */
-    overflow-x: scroll;   /* lets it scroll if it gets too wide */
-    margin: 0 auto;
-}
-.image-row img {
-    width: 220px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    flex-shrink: 0;
 }
 .nav-inner {
     font-family: "source-sans-3-variable", sans-serif;
@@ -233,19 +216,38 @@ h3 {
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
+    width: min(100%, 1000px);
+    margin: 0 auto;
 }
 
+.image-row img {
+    width: 1000px;
+    max-width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    width: max-content;
+    overflow-x: scroll;
+    margin: 0 auto;
+}
 .image-row img {
     width: 220px;
     height: 180px;
     object-fit: cover;
-    display: block;
     border-radius: 10px;
+    flex-shrink: 0;
+}
+.nav-inner {
+    font-family: "source-sans-3-variable", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 img-carousel-section {
     display: block;
-    width: 100%;
     overflow: hidden;
     margin: 2rem 0;
 }

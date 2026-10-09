@@ -1,104 +1,112 @@
-(() => {
-  const dropButton = document.getElementById("dropBtn");
-  const dropMenu = document.getElementById("dropMenu");
-  const restaurantGrid = document.getElementById("restaurantGrid");
-  const restaurantStatus = document.getElementById("restaurantStatus");
-  const slider = document.getElementById("starRating");
-  const ratingOutput = document.getElementById("starRatingValue");
+const dropBtn = document.getElementById("dropBtn");
+        const dropMenu = document.getElementById("dropMenu");
+        const restaurantGrid = document.getElementById("restaurantGrid");
+        const restaurantStatus = document.getElementById("restaurantStatus");
+        const pageLoader = document.getElementById("pageLoader");
+        const slider = document.getElementById("starRating");
+        const ratingOutput = document.getElementById("starRatingValue");
+        let restaurants = [];
+        let selectedCuisine = "all";
 
-  if (!dropButton || !dropMenu || !restaurantGrid || !restaurantStatus || !slider || !ratingOutput) {
-    return;
-  }
+        function setOpen(isOpen) {
+            dropMenu.classList.toggle("open", isOpen);
+            dropBtn.setAttribute("aria-expanded", String(isOpen));
+        }
 
-  let restaurants = [];
-  let selectedCuisine = "all";
+        function renderRestaurants() {
+            let visibleRestaurants = restaurants.filter((restaurant) => {
+                if (selectedCuisine === "all") return true;
 
-  function setMenuOpen(isOpen) {
-    dropMenu.classList.toggle("open", isOpen);
-    dropButton.setAttribute("aria-expanded", String(isOpen));
-  }
+                const cuisineName = (restaurant.Cuisine || "").toLowerCase();
+                const selectedCuisineName = selectedCuisine.replaceAll("-", " ");
+                return cuisineName === selectedCuisineName;
+            });
+            visibleRestaurants = visibleRestaurants.filter((restaurant) => {
+                return Number(restaurant.Rating) >= Number(slider.value);
+            });
+            restaurantGrid.replaceChildren();
 
-  function renderRestaurants() {
-    const visibleRestaurants = restaurants.filter((restaurant) => {
-      return selectedCuisine === "all"
-        || (restaurant.Cuisine || "").toLowerCase() === selectedCuisine.replaceAll("-", " ");
-    });
+            visibleRestaurants.forEach((restaurant) => {
+                const card = document.createElement("a");
+                card.className = "restaurant-card";
+                const destination = restaurant.link || "#";
+                card.href = /^https?:\/\//i.test(destination) ? destination : `https://${destination}`;
+                card.target = "_blank";
+                card.rel = "noopener noreferrer";
+                card.setAttribute("aria-label", `Visit ${restaurant.Name || "restaurant"} website`);
 
-    restaurantGrid.replaceChildren();
+                const image = document.createElement("img");
+                image.src = restaurant.path;
+                image.alt = restaurant.alttext || restaurant.Name;
+                image.loading = "lazy";
 
-    visibleRestaurants.forEach((restaurant) => {
-      const card = document.createElement("article");
-      card.className = "restaurant-card";
+                const copy = document.createElement("div");
+                copy.className = "restaurant-card-copy";
 
-      const image = document.createElement("img");
-      image.src = restaurant.path || "";
-      image.alt = restaurant.alttext || restaurant.Name || "Restaurant image";
-      image.loading = "lazy";
+                const name = document.createElement("h3");
+                name.textContent = restaurant.Name;
 
-      const copy = document.createElement("div");
-      copy.className = "restaurant-card-copy";
+                const cuisine = document.createElement("p");
+                cuisine.textContent = restaurant.Cuisine;
 
-      const name = document.createElement("h3");
-      name.textContent = restaurant.Name || "Restaurant";
+                const rating = document.createElement("p");
+                rating.textContent = `Rating: ${Number(restaurant.Rating).toFixed(1)} / 5`;
 
-      const cuisine = document.createElement("p");
-      cuisine.textContent = restaurant.Cuisine || "Cuisine not listed";
+                copy.append(name, cuisine, rating);
+                card.append(image, copy);
+                restaurantGrid.append(card);
+            });
 
-      const rating = document.createElement("p");
-      rating.textContent = `Rating: ${Number(restaurant.Rating).toFixed(1)} / 5`;
+            restaurantStatus.textContent = `${visibleRestaurants.length} restaurants`;
+        }
 
-      copy.append(name, cuisine, rating);
-      card.append(image, copy);
-      restaurantGrid.append(card);
-    });
+        dropBtn.addEventListener("click", (event) => {
+            event.stopPropagation();
+            setOpen(!dropMenu.classList.contains("open"));
+        });
 
-    restaurantStatus.textContent = `${visibleRestaurants.length} restaurants`;
-  }
+        dropMenu.addEventListener("click", (event) => {
+            const option = event.target.closest("button[data-value]");
+            if (!option) return;
 
-  dropButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    setMenuOpen(!dropMenu.classList.contains("open"));
-  });
+            dropBtn.textContent = `${option.textContent} ▾`;
+            selectedCuisine = option.dataset.value;
+            renderRestaurants();
+            setOpen(false);
+        });
 
-  dropMenu.addEventListener("click", (event) => {
-    const option = event.target.closest("button[data-value]");
-    if (!option) return;
+        document.addEventListener("click", () => setOpen(false));
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                setOpen(false);
+            }
+        });
 
-    selectedCuisine = option.dataset.value;
-    dropButton.textContent = `${option.textContent} ▾`;
-    renderRestaurants();
-    setMenuOpen(false);
-  });
+        function updateFill() {
+            const min = Number(slider.min);
+            const max = Number(slider.max);
+            const value = Number(slider.value);
+            const percentage = ((value - min) / (max - min)) * 100;
+            slider.style.setProperty("--fill", `${percentage}%`);
+            ratingOutput.textContent = value.toFixed(1);
+            renderRestaurants();
+        }
 
-  document.addEventListener("click", () => setMenuOpen(false));
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenuOpen(false);
-  });
+        slider.addEventListener("input", updateFill);
+        updateFill();
 
-  function updateRatingDisplay() {
-    const min = Number(slider.min);
-    const max = Number(slider.max);
-    const value = Number(slider.value);
-    const percentage = ((value - min) / (max - min)) * 100;
-    slider.style.setProperty("--fill", `${percentage}%`);
-    ratingOutput.textContent = value.toFixed(1);
-  }
-
-  slider.addEventListener("input", updateRatingDisplay);
-  updateRatingDisplay();
-
-  fetch("restuarants.json")
-    .then((response) => {
-      if (!response.ok) throw new Error(`Could not load restaurant data (${response.status})`);
-      return response.json();
-    })
-    .then((data) => {
-      if (!Array.isArray(data)) throw new TypeError("Restaurant data must be an array.");
-      restaurants = data;
-      renderRestaurants();
-    })
-    .catch((error) => {
-      restaurantStatus.textContent = "Restaurant images could not be loaded.";
-      console.error(error);
-    });
-})();
+        fetch("restuarants.json")
+            .then((response) => {
+                if (!response.ok) throw new Error(`Could not load restaurant data (${response.status})`);
+                return response.json();
+            })
+            .then((data) => {
+                restaurants = data;
+                renderRestaurants();
+                pageLoader.hidden = true;
+            })
+            .catch((error) => {
+                restaurantStatus.textContent = "Restaurant images could not be loaded.";
+                pageLoader.hidden = true;
+                console.error(error);
+            });
