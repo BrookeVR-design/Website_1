@@ -110,3 +110,9 @@ const dropBtn = document.getElementById("dropBtn");
                 pageLoader.hidden = true;
                 console.error(error);
             });
+async function getRandomDog () {
+    const response = await fetch('https://dog.ceo/api/breeds/image/random');
+    const json = await response.json();
+    console.log (json);
+    dogImage.src = json.message;
+}

@@ -1,0 +1,19 @@
+.flair {
+  position: fixed;
+  opacity: 0;
+  width: 50px;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+
+h1 {
+  font-size: 8vw
+}

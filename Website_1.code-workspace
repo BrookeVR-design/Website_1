@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../Downloads/database-demo"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Website_1"
+	}
+}
